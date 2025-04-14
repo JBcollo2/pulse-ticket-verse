@@ -78,7 +78,7 @@ const TicketPreview: React.FC<TicketPreviewProps> = ({
               showQr && "animate-morph-qr"
             )}
           >
-            <div className="w-48 h-48 bg-[url('https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=TICKET-" + ticketId + "')] bg-contain bg-center bg-no-repeat mb-3"></div>
+            <div className={`w-48 h-48 bg-contain bg-center bg-no-repeat mb-3`} style={{backgroundImage: `url('https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=TICKET-${ticketId}')`}}></div>
             <span className="text-sm text-muted-foreground">Ticket ID: {ticketId}</span>
           </div>
         )}
