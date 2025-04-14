@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -61,6 +62,15 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
+				},
+				pulse: {
+					purple: "#8B5CF6",
+					"deep-purple": "#7E69AB",
+					orange: "#F97316",
+					blue: "#0EA5E9",
+					charcoal: "#221F26",
+					"dark-gray": "#403E43",
+					magenta: "#D946EF",
 				}
 			},
 			borderRadius: {
@@ -84,11 +94,64 @@ export default {
 					to: {
 						height: '0'
 					}
+				},
+				'fade-in': {
+					'0%': {
+						opacity: '0',
+						transform: 'translateY(10px)'
+					},
+					'100%': {
+						opacity: '1',
+						transform: 'translateY(0)'
+					}
+				},
+				'pulse-slow': {
+					'0%, 100%': {
+						opacity: '1'
+					},
+					'50%': {
+						opacity: '0.8'
+					}
+				},
+				'float': {
+					'0%, 100%': {
+						transform: 'translateY(0)'
+					},
+					'50%': {
+						transform: 'translateY(-10px)'
+					}
+				},
+				'card-hover': {
+					'0%': {
+						transform: 'scale(1)',
+						boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1)'
+					},
+					'100%': {
+						transform: 'scale(1.03)',
+						boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1)'
+					}
+				},
+				'morph-qr': {
+					'0%': {
+						clipPath: 'circle(0% at 50% 50%)'
+					},
+					'100%': {
+						clipPath: 'circle(70.7% at 50% 50%)'
+					}
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'fade-in': 'fade-in 0.5s ease-out forwards',
+				'pulse-slow': 'pulse-slow 3s infinite ease-in-out',
+				'float': 'float 6s infinite ease-in-out',
+				'card-hover': 'card-hover 0.3s forwards',
+				'morph-qr': 'morph-qr 0.5s ease-in-out forwards'
+			},
+			backgroundImage: {
+				'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+				'hero-pattern': 'linear-gradient(to right bottom, rgba(139, 92, 246, 0.8), rgba(14, 165, 233, 0.8))'
 			}
 		}
 	},
