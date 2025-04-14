@@ -1,13 +1,22 @@
 
 import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
-import { Search, Menu, X, User, Bell } from "lucide-react";
+import { Search, Menu, X, User, Bell, LayoutDashboard } from "lucide-react";
 import { cn } from '@/lib/utils';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { ThemeToggle } from './ThemeToggle';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const location = useLocation();
+  
+  // Function to determine if a link is active
+  const isActive = (path) => {
+    if (path === '/') {
+      return location.pathname === '/';
+    }
+    return location.pathname.startsWith(path);
+  };
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-background/80 border-b border-border">
@@ -24,10 +33,42 @@ const Navbar = () => {
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-8">
-          <Link to="/events" className="font-medium hover:text-pulse-purple transition-colors">Events</Link>
-          <Link to="/venues" className="font-medium hover:text-pulse-purple transition-colors">Venues</Link>
-          <Link to="/artists" className="font-medium hover:text-pulse-purple transition-colors">Artists</Link>
-          <Link to="/about" className="font-medium hover:text-pulse-purple transition-colors">About</Link>
+          <Link 
+            to="/events" 
+            className={cn(
+              "font-medium transition-colors",
+              isActive('/events') ? "text-pulse-purple" : "hover:text-pulse-purple"
+            )}
+          >
+            Events
+          </Link>
+          <Link 
+            to="/venues" 
+            className={cn(
+              "font-medium transition-colors",
+              isActive('/venues') ? "text-pulse-purple" : "hover:text-pulse-purple"
+            )}
+          >
+            Venues
+          </Link>
+          <Link 
+            to="/artists" 
+            className={cn(
+              "font-medium transition-colors",
+              isActive('/artists') ? "text-pulse-purple" : "hover:text-pulse-purple"
+            )}
+          >
+            Artists
+          </Link>
+          <Link 
+            to="/about" 
+            className={cn(
+              "font-medium transition-colors",
+              isActive('/about') ? "text-pulse-purple" : "hover:text-pulse-purple"
+            )}
+          >
+            About
+          </Link>
         </nav>
 
         {/* Desktop Actions */}
@@ -39,6 +80,11 @@ const Navbar = () => {
           <Button variant="ghost" size="icon">
             <Bell size={20} />
           </Button>
+          <Link to="/dashboard">
+            <Button variant="ghost" size="icon">
+              <LayoutDashboard size={20} />
+            </Button>
+          </Link>
           <Button variant="ghost" size="icon">
             <User size={20} />
           </Button>
@@ -64,10 +110,53 @@ const Navbar = () => {
         isMenuOpen ? "translate-x-0" : "translate-x-full"
       )}>
         <nav className="container mx-auto px-4 py-6 flex flex-col space-y-6">
-          <Link to="/events" className="text-2xl font-medium hover:text-pulse-purple transition-colors">Events</Link>
-          <Link to="/venues" className="text-2xl font-medium hover:text-pulse-purple transition-colors">Venues</Link>
-          <Link to="/artists" className="text-2xl font-medium hover:text-pulse-purple transition-colors">Artists</Link>
-          <Link to="/about" className="text-2xl font-medium hover:text-pulse-purple transition-colors">About</Link>
+          <Link 
+            to="/events" 
+            className={cn(
+              "text-2xl font-medium transition-colors",
+              isActive('/events') ? "text-pulse-purple" : "hover:text-pulse-purple"
+            )}
+            onClick={() => setIsMenuOpen(false)}
+          >
+            Events
+          </Link>
+          <Link 
+            to="/venues" 
+            className={cn(
+              "text-2xl font-medium transition-colors",
+              isActive('/venues') ? "text-pulse-purple" : "hover:text-pulse-purple"
+            )}
+            onClick={() => setIsMenuOpen(false)}
+          >
+            Venues
+          </Link>
+          <Link 
+            to="/artists" 
+            className={cn(
+              "text-2xl font-medium transition-colors",
+              isActive('/artists') ? "text-pulse-purple" : "hover:text-pulse-purple"
+            )}
+            onClick={() => setIsMenuOpen(false)}
+          >
+            Artists
+          </Link>
+          <Link 
+            to="/about" 
+            className={cn(
+              "text-2xl font-medium transition-colors",
+              isActive('/about') ? "text-pulse-purple" : "hover:text-pulse-purple"
+            )}
+            onClick={() => setIsMenuOpen(false)}
+          >
+            About
+          </Link>
+          <Link
+            to="/dashboard"
+            className="text-2xl font-medium hover:text-pulse-purple transition-colors"
+            onClick={() => setIsMenuOpen(false)}
+          >
+            Dashboard
+          </Link>
           <div className="h-px bg-border my-4"></div>
           <Button className="w-full" size="lg">Sign In</Button>
           <div className="flex justify-between mt-4">
