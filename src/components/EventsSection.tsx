@@ -146,7 +146,7 @@ const EventsSection = () => {
         </div>
         
         <div className="mt-4 md:mt-0">
-          <div className="glass-card p-1 flex gap-1">
+          <div className="glass-card dark:glass-card-dark p-1 flex gap-1">
             {tabs.map((tab) => (
               <Button
                 key={tab.id}

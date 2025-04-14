@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Search, Menu, X, User, Bell } from "lucide-react";
 import { cn } from '@/lib/utils';
 import { Link } from 'react-router-dom';
+import { ThemeToggle } from './ThemeToggle';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -14,7 +15,7 @@ const Navbar = () => {
         <Link to="/" className="flex items-center space-x-2">
           <div className="relative w-8 h-8">
             <div className="absolute inset-0 bg-pulse-purple rounded-full animate-pulse-slow"></div>
-            <div className="absolute inset-1 bg-white rounded-full flex items-center justify-center">
+            <div className="absolute inset-1 bg-white dark:bg-background rounded-full flex items-center justify-center">
               <span className="text-pulse-purple font-bold text-sm">P</span>
             </div>
           </div>
@@ -31,6 +32,7 @@ const Navbar = () => {
 
         {/* Desktop Actions */}
         <div className="hidden md:flex items-center space-x-4">
+          <ThemeToggle />
           <Button variant="ghost" size="icon">
             <Search size={20} />
           </Button>
@@ -44,14 +46,16 @@ const Navbar = () => {
         </div>
 
         {/* Mobile Menu Button */}
-        <Button 
-          variant="ghost" 
-          size="icon" 
-          className="md:hidden"
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-        >
-          {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-        </Button>
+        <div className="flex items-center space-x-2 md:hidden">
+          <ThemeToggle />
+          <Button 
+            variant="ghost" 
+            size="icon" 
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+          >
+            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </Button>
+        </div>
       </div>
 
       {/* Mobile Menu */}
