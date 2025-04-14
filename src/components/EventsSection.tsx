@@ -1,9 +1,8 @@
-
 import React, { useState } from 'react';
 import EventCard from './EventCard';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
-import { Calendar, Fire, Sparkles, Clock } from 'lucide-react';
+import { Calendar, Flame, Sparkles, Clock } from 'lucide-react';
 
 // Sample event data
 const events = [
@@ -71,7 +70,7 @@ const events = [
 
 const tabs = [
   { id: 'all', label: 'All Events', icon: Sparkles },
-  { id: 'trending', label: 'Trending', icon: Fire },
+  { id: 'trending', label: 'Trending', icon: Flame },
   { id: 'today', label: 'Today', icon: Clock },
   { id: 'upcoming', label: 'Upcoming', icon: Calendar }
 ];
