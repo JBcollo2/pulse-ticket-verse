@@ -1,13 +1,14 @@
-
 import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Search, Menu, X, User, Bell, LayoutDashboard } from "lucide-react";
 import { cn } from '@/lib/utils';
 import { Link, useLocation } from 'react-router-dom';
 import { ThemeToggle } from './ThemeToggle';
+import AuthCard from './AuthCard';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isAuthOpen, setIsAuthOpen] = useState(false);
   const location = useLocation();
   
   // Function to determine if a link is active
@@ -88,7 +89,7 @@ const Navbar = () => {
           <Button variant="ghost" size="icon">
             <User size={20} />
           </Button>
-          <Button>Sign In</Button>
+          <Button onClick={() => setIsAuthOpen(true)}>Sign In</Button>
         </div>
 
         {/* Mobile Menu Button */}
@@ -172,6 +173,8 @@ const Navbar = () => {
           </div>
         </nav>
       </div>
+
+      <AuthCard isOpen={isAuthOpen} onClose={() => setIsAuthOpen(false)} />
     </header>
   );
 };
